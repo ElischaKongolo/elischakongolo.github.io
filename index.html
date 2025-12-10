@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elischa Kongolo-Malunga | Software Developer Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --border-radius: 8px;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+            --cv-red: #dc2626;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #0a192f;
+            background-image: url('https://i.imgur.com/9LydlnA.gif');
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 25, 47, 0.85);
+            z-index: -1;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        section:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.92);
+        }
+
+        section:nth-child(odd):not(.hero) {
+            background-color: rgba(248, 250, 252, 0.92);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--dark);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 4px;
+            background: var(--primary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: var(--primary);
+            color: white;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-cv {
+            background: var(--cv-red);
+            border: 2px solid var(--cv-red);
+            color: white;
+        }
+
+        .btn-cv:hover {
+            background: #b91c1c;
+            border-color: #b91c1c;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 15px -3px rgba(220, 38, 38, 0.3);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(255, 255, 255, 0.97);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dark);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a.active:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -5px;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+            background: none;
+            border: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 150px;
+            background: linear-gradient(135deg, rgba(240, 249, 255, 0.95) 0%, rgba(224, 242, 254, 0.95) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            animation: shimmer 8s infinite linear;
+            z-index: 0;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .profile-img-container {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 8px solid white;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            margin: 0 auto;
+            position: relative;
+            transition: var(--transition);
+            background: white;
+        }
+
+        .profile-img-container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .profile-img-container:hover .profile-img {
+            transform: scale(1.05);
+        }
+
+        .profile-img-container::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            right: -15px;
+            bottom: -15px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            z-index: -1;
+            opacity: 0.3;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .hero h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray);
+            background: rgba(255, 255, 255, 0.9);
+            padding: 12px 18px;
+            border-radius: var(--border-radius);
+            backdrop-filter: blur(5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-item i {
+            color: var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            transition: var(--transition);
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-size: 1.1rem;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .education-timeline {
+            position: relative;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .education-timeline:before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background-color: var(--primary);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 45px;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: 5px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+            z-index: 1;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content .institution {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .timeline-content .date {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 20px;
+            color: var(--dark);
+            font-size: 1.4rem;
+        }
+
+        .skill-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-item {
+            padding: 10px 18px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+            backdrop-filter: blur(5px);
+            cursor: default;
+        }
+
+        .skill-item:hover {
+            background-color: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(37, 99, 235, 0.2);
+        }
+
+        .skill-item.technical {
+            background-color: rgba(219, 234, 254, 0.95);
+            color: var(--primary-dark);
+        }
+
+        .skill-item.soft {
+            background-color: rgba(240, 253, 244, 0.95);
+            color: #166534;
+        }
+
+        .skill-item.interests {
+            background-color: rgba(254, 243, 199, 0.95);
+            color: #92400e;
+        }
+
+        /* Experience Section */
+        .experience-tabs {
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        .tabs-header {
+            display: flex;
+            justify-content: center;
+            border-bottom: 2px solid var(--light-gray);
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--border-radius);
+            padding: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--gray);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: var(--border-radius);
+            margin: 0 5px;
+        }
+
+        .tab-btn:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            background: white;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .tab-btn.active:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -2px;
+            left: 0;
+            border-radius: 2px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .experience-item {
+            background-color: rgba(255, 255, 255, 0.97);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+            border-left: 4px solid var(--primary);
+        }
+
+        .experience-item:hover {
+            box-shadow: var(--shadow);
+            transform: translateY(-5px);
+        }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .exp-header h3 {
+            font-size: 1.3rem;
+            color: var(--dark);
+        }
+
+        .exp-meta {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .exp-details {
+            margin-top: 15px;
+        }
+
+        .exp-details ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .exp-details li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+
+        .exp-details li:before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background-color: rgba(255, 255, 255, 0.97);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+
+        .portfolio-item:hover {
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
+        }
+
+        .portfolio-img {
+            height: 200px;
+            overflow: hidden;
+            background: #f1f5f9;
+        }
+
+        .portfolio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-img img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-info {
+            padding: 25px;
+        }
+
+        .portfolio-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .portfolio-info .project-meta {
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .tag {
+            padding: 5px 12px;
+            background-color: rgba(226, 232, 240, 0.9);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: var(--gray);
+            backdrop-filter: blur(5px);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            margin-bottom: 20px;
+        }
+
+        .contact-form {
+            background-color: rgba(255, 255, 255, 0.97);
+            padding: 35px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(226, 232, 240, 0.5);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-family: 'Roboto', sans-serif;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.95);
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            background: white;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(30, 41, 59, 0.97);
+            color: white;
+            padding: 60px 0 30px;
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-logo span {
+            color: var(--primary);
+        }
+
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .hero-text {
+                order: 2;
+            }
+            
+            .hero-image {
+                order: 1;
+            }
+            
+            .contact-info {
+                justify-content: center;
+            }
+            
+            .profile-img-container {
+                width: 280px;
+                height: 280px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                background-color: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(15px);
+                width: 100%;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+                border-bottom: 1px solid rgba(226, 232, 240, 0.5);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .tabs-header {
+                flex-wrap: wrap;
+            }
+            
+            .profile-img-container {
+                width: 250px;
+                height: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero {
+                padding-top: 120px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .experience-item, .portfolio-item, .contact-form {
+                padding: 20px;
+            }
+            
+            .profile-img-container {
+                width: 220px;
+                height: 220px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Elischa<span>.</span></a>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Elischa Imona Kongolo-Malunga</h1>
+                    <h2>Software Engineering Graduate & Developer</h2>
+                    <p>A software engineer forged by perseverance. From leveling up my education to building complex projects and leading academic societies, my journey is defined by embracing challenges as fuel. I turn obstacles into elegant, functional code and am driven by the belief that the best solutions are built just beyond the point where most would stop.</p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>060 508 1893</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>elischaimonaedenkongolo@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Pretoria, South Africa</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-file-pdf"></i>
+                            <span>CV Available</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-btns" style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <a href="#portfolio" class="btn">View My Work</a>
+                        <a href="#contact" class="btn btn-outline">Contact Me</a>
+                        <!-- UPDATED CV LINK -->
+                        <a href="https://drive.google.com/file/d/1EMYcC_ac8T3r4LBZjBJBZux1sCA-1alb/view?usp=sharing" class="btn btn-cv" target="_blank">
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="www.linkedin.com/in/elischa" class="social-link" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/ElischaKongolo" class="social-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <!-- UPDATED CV LINK -->
+                        <a href="https://drive.google.com/file/d/1EMYcC_ac8T3r4LBZjBJBZux1sCA-1alb/view?usp=sharing" class="social-link" target="_blank" title="Download CV">
+                            <i class="fas fa-file-pdf"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-image">
+                    <div class="profile-img-container">
+                        <img src="https://i.imgur.com/lNjvcSN.png" 
+                             alt="Elischa Kongolo-Malunga" 
+                             class="profile-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Education & About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="education-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>BSc, Information Technology: Software Engineering</h3>
+                            <div class="institution">Eduvos</div>
+                            <div class="date">Expected Graduation: May 2026</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Higher Certificate, Information Systems: Software Development</h3>
+                            <div class="institution">Eduvos</div>
+                            <div class="date">Completed: May 2023</div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="timeline-content">
+                            <h3>Matric</h3>
+                            <div class="institution">Assemblies of God College</div>
+                            <div class="date">Completed: December 2019</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-text">
+                    <h3>My Journey</h3>
+                    <p>My name is Elischa, and my path to becoming a Software Engineer wasn't a straight line, it was a choice, made over and over again, to take the next step even when the road wasn't clear.</p>
+                    
+                    <p>It started with a spark: a curiosity about how things worked behind the screen. That curiosity led me to earn my Higher Certificate in Software Development. It was a solid start, but I knew in my gut it wasn't the finish line. So, while many might have paused, I pushed forward enrolling in my BSc in Software Engineering right after. For years, I've been living in two worlds: the theoretical world of advanced programming concepts and the practical world of building real applications from scratch. It hasn't been easy, but it has taught me that grit is the most important language a developer can learn.</p>
+                    
+                    <p>This same stubborn perseverance shaped everything I did. When I saw a need, I didn't just acknowledge it, I built a solution for it. I taught myself new frameworks to create a sneaker e-commerce site because I wanted to understand the full journey of an online product. I dove into mobile development to build a South African Sign Language app, believing technology should bridge gaps, not create them. I stayed up late not just to finish assignments, but to truly *finish* them to make sure the banking app I built wasn't just functional, but secure and robust.</p>
+                    
+                    <p>And this mindset spilled out of the coding environment and into my community. When I was elected President of the Golden Key Honour Society, I didn't just chair meetings. I brought the same determination I used to debug a stubborn piece of code to organizing events and uniting a team around a common goal. Leadership, I found, is just another form of problem-solving: people are the variables, and a shared vision is the optimal solution.</p>
+                    
+                    <p>Today, I stand at the edge of my formal education, not with a sigh of relief, but with a lean forward. The late nights, the complex problems, the moments of doubt they didn't break my resolve; they built my foundation.</p>
+                    
+                    <div style="margin-top: 30px; display: flex; gap: 15px; flex-wrap: wrap;">
+                        <a href="#contact" class="btn">Get In Touch</a>
+                        <!-- UPDATED CV LINK IN ABOUT SECTION -->
+                        <a href="https://drive.google.com/file/d/1EMYcC_ac8T3r4LBZjBJBZux1sCA-1alb/view?usp=sharing" class="btn btn-cv" target="_blank">
+                            <i class="fas fa-download"></i> Download CV
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>Skills & Interests</h2>
+            </div>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Technical Skills</h3>
+                    <div class="skill-items">
+                        <div class="skill-item technical">C#</div>
+                        <div class="skill-item technical">C++</div>
+                        <div class="skill-item technical">Python</div>
+                        <div class="skill-item technical">JavaScript</div>
+                        <div class="skill-item technical">HTML/CSS</div>
+                        <div class="skill-item technical">PHP</div>
+                        <div class="skill-item technical">ASP.NET</div>
+                        <div class="skill-item technical">Flutter</div>
+                        <div class="skill-item technical">SQL Database</div>
+                        <div class="skill-item technical">Microsoft Office</div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <div class="skill-items">
+                        <div class="skill-item soft">Communication</div>
+                        <div class="skill-item soft">Leadership</div>
+                        <div class="skill-item soft">Problem-solving</div>
+                        <div class="skill-item soft">Critical thinking</div>
+                        <div class="skill-item soft">Teamwork</div>
+                        <div class="skill-item soft">Organisation</div>
+                        <div class="skill-item soft">Time management</div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Interests</h3>
+                    <div class="skill-items">
+                        <div class="skill-item interests">Software Development</div>
+                        <div class="skill-item interests">Mobile Apps</div>
+                        <div class="skill-item interests">Databases</div>
+                        <div class="skill-item interests">Systems Design</div>
+                        <div class="skill-item interests">Soccer</div>
+                        <div class="skill-item interests">Chess</div>
+                        <div class="skill-item interests">Swimming</div>
+                        <div class="skill-item interests">Reading</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-title">
+                <h2>Experience</h2>
+            </div>
+            
+            <div class="experience-tabs">
+                <div class="tabs-header">
+                    <button class="tab-btn active" data-tab="work">Work Experience</button>
+                    <button class="tab-btn" data-tab="leadership">Leadership</button>
+                </div>
+                
+                <div class="tab-content active" id="work-tab">
+                    <div class="experience-item">
+                        <div class="exp-header">
+                            <h3>Part-Time Business Assistant</h3>
+                            <div class="exp-date">Aug 2022 - Oct 2023</div>
+                        </div>
+                        <div class="exp-meta">
+                            <strong>Hatfield Christian Church Tuck-Shop</strong> | Pretoria
+                        </div>
+                        <div class="exp-details">
+                            <ul>
+                                <li><strong>More than a shopkeeper</strong>—I was entrusted with the operational heartbeat of a community-focused business.</li>
+                                <li>Managed end-to-end inventory and procurement processes, ensuring the shop was always stocked with the right products at the right time, directly supporting daily operations and customer satisfaction.</li>
+                                <li>Took initiative to analyze sales data and financial trends, providing actionable insights that informed pricing strategies and contributed to the shop's financial health.</li>
+                                <li>Developed and executed targeted marketing initiatives to drive engagement and sales, while continuously refining processes to maintain a smooth, efficient, and welcoming environment for all customers.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tab-content" id="leadership-tab">
+                    <div class="experience-item">
+                        <div class="exp-header">
+                            <h3>President of the Committee Team</h3>
+                            <div class="exp-date">Jul 2025 - Nov 2025</div>
+                        </div>
+                        <div class="exp-meta">
+                            <strong>Golden Key Honour Society (Eduvos)</strong>
+                        </div>
+                        <div class="exp-details">
+                            <ul>
+                                <li><strong>Translated vision into action</strong> by leading a team of peers to elevate the campus experience for an international honor society.</li>
+                                <li>Championed and orchestrated multiple campus-wide initiatives from conception to execution, fostering academic excellence and community engagement.</li>
+                                <li>Strategically coordinated cross-functional teams, delegating responsibilities and aligning efforts to ensure the seamless delivery of events and programs.</li>
+                                <li>Served as the primary liaison between the society, student body, and faculty, managing all communications and implementing structured engagement programs that increased participation and visibility.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="exp-header">
+                            <h3>Prefect & Sport Leader</h3>
+                            <div class="exp-date">Jan 2019 - Dec 2019</div>
+                        </div>
+                        <div class="exp-meta">
+                            <strong>Assemblies of God College</strong>
+                        </div>
+                        <div class="exp-details">
+                            <ul>
+                                <li><strong>Laid the foundation for my leadership journey</strong> by serving as a role model and motivator within my school community.</li>
+                                <li>Provided dedicated student leadership, acting as a responsible representative and supportive peer to enhance the school's positive environment.</li>
+                                <li>Contributed actively to the planning and success of school events and daily activities, demonstrating early commitment to teamwork and organizational support.</li>
+                                <li>As Sport Leader, encouraged participation and sportsmanship, helping to cultivate a collaborative and spirited atmosphere within school athletics.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-title">
+                <h2>Portfolio Projects</h2>
+            </div>
+            <div class="portfolio-grid">
+                <!-- Project 1: E-commerce Website -->
+                <div class="portfolio-item">
+                    <div class="portfolio-img">
+                        <div style="width:100%; height:100%; background:linear-gradient(135deg, #667eea 0%, #764ba2 100%); display:flex; align-items:center; justify-content:center; color:white; font-size:3rem;">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Sneaker E-Commerce Website</h3>
+                        <div class="project-meta">Mar 2025 - May 2025 | Eduvos, Pretoria</div>
+                        <p>Full-stack e-commerce website with product management, login system, and checkout workflow. Developed a database-driven platform with responsive UI design for multi-device compatibility.</p>
+                        <div class="portfolio-tags">
+                            <div class="tag">Full Stack</div>
+                            <div class="tag">Database-driven</div>
+                            <div class="tag">Responsive UI</div>
+                            <div class="tag">User Authentication</div>
+                        </div>
+                        <div class="project-links" style="margin-top: 20px; display: flex; gap: 15px; flex-wrap: wrap;">
+                            <a href="https://github.com/ElischaKongolo/all-around-sneakers.git" 
+                               class="btn" 
+                               target="_blank" 
+                               style="padding: 10px 20px; font-size: 0.9rem;">
+                                <i class="fab fa-github"></i> View Code
+                            </a>
+                            <button class="btn btn-outline" 
+                                    style="padding: 10px 20px; font-size: 0.9rem;"
+                                    onclick="alert('Live demo coming soon! Contact me for more details.')">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2: SASL App -->
+                <div class="portfolio-item">
+                    <div class="portfolio-img">
+                        <div style="width:100%; height:100%; background:linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display:flex; align-items:center; justify-content:center; color:white; font-size:3rem;">
+                            <i class="fas fa-hands"></i>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>South-Africa Sign Language App</h3>
+                        <div class="project-meta">Jul 2025 - Nov 2025 | Eduvos, Pretoria</div>
+                        <p>Mobile dictionary app for Sign language learners with multimedia features and advanced search functionality. Created an intuitive navigation structure and user-friendly interface to make learning accessible.</p>
+                        <div class="portfolio-tags">
+                            <div class="tag">Mobile App</div>
+                            <div class="tag">Flutter</div>
+                            <div class="tag">User-Friendly</div>
+                            <div class="tag">Educational</div>
+                        </div>
+                        <div class="project-links" style="margin-top: 20px; display: flex; gap: 15px; flex-wrap: wrap;">
+                            <a href="https://github.com/NathiDEV-dot/SASL-APP.git" 
+                               class="btn" 
+                               target="_blank" 
+                               style="padding: 10px 20px; font-size: 0.9rem;">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                            <button class="btn btn-outline" 
+                                    style="padding: 10px 20px; font-size: 0.9rem;"
+                                    onclick="alert('Mobile app available upon request. Currently in development.')">
+                                <i class="fab fa-google-play"></i> Play Store
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3: Online Banking App -->
+                <div class="portfolio-item">
+                    <div class="portfolio-img">
+                        <div style="width:100%; height:100%; background:linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display:flex; align-items:center; justify-content:center; color:white; font-size:3rem;">
+                            <i class="fas fa-university"></i>
+                        </div>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Online Banking Application</h3>
+                        <div class="project-meta">Oct 2022 - Nov 2022 | Eduvos, Pretoria</div>
+                        <p>Secure Online Banking Application using C# with SQL Server backend, featuring login authentication, user management, and account CRUD operations. Managed SQL Server database and integrated with C# via ADO.NET.</p>
+                        <div class="portfolio-tags">
+                            <div class="tag">C#</div>
+                            <div class="tag">SQL Server</div>
+                            <div class="tag">ADO.NET</div>
+                            <div class="tag">Security</div>
+                        </div>
+                        <div class="project-links" style="margin-top: 20px; display: flex; gap: 15px; flex-wrap: wrap;">
+                            <a href="https://github.com/ElischaKongolo/OnlineBankingApp.git" 
+                               class="btn" 
+                               target="_blank" 
+                               style="padding: 10px 20px; font-size: 0.9rem;">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                            <button class="btn btn-outline" 
+                                    style="padding: 10px 20px; font-size: 0.9rem;"
+                                    onclick="alert('Demo available upon request. Please contact me for access.')">
+                                <i class="fas fa-lock"></i> Private Demo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>I'm currently open to internship opportunities, collaborative projects, or any interesting software development roles. Let's discuss how I can contribute to your team.</p>
+                    
+                    <div style="margin-top: 30px;">
+                        <div class="contact-item" style="margin-bottom: 20px;">
+                            <i class="fas fa-phone"></i>
+                            <span><strong>Phone:</strong> 060 508 1893</span>
+                        </div>
+                        <div class="contact-item" style="margin-bottom: 20px;">
+                            <i class="fas fa-envelope"></i>
+                            <span><strong>Email:</strong> elischaimonaedenkongolo@gmail.com</span>
+                        </div>
+                        <div class="contact-item" style="margin-bottom: 20px;">
+                            <i class="fab fa-linkedin"></i>
+                            <span><strong>LinkedIn:</strong> linkedin.com/in/elischa</span>
+                        </div>
+                        <div class="contact-item" style="margin-bottom: 20px;">
+                            <i class="fas fa-file-pdf"></i>
+                            <span><strong>CV:</strong> Available for download</span>
+                        </div>
+                    </div>
+                    
+                    <div class="social-links" style="margin-top: 30px;">
+                        <a href="www.linkedin.com/in/elischa" class="social-link" target="_blank">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/ElischaKongolo" class="social-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <!-- UPDATED CV LINK -->
+                        <a href="https://drive.google.com/file/d/1EMYcC_ac8T3r4LBZjBJBZux1sCA-1alb/view?usp=sharing" class="social-link" target="_blank" title="Download CV">
+                            <i class="fas fa-file-pdf"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Send a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Elischa<span>.</span></div>
+                <p>Software Engineering Student & Developer</p>
+                <div class="social-links" style="justify-content: center; margin: 20px 0;">
+                    <a href="www.linkedin.com/in/elischa" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/ElischaKongolo" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <!-- UPDATED CV LINK IN FOOTER -->
+                    <a href="https://drive.google.com/file/d/1EMYcC_ac8T3r4LBZjBJBZux1sCA-1alb/view?usp=sharing" class="social-link" target="_blank" title="Download CV">
+                        <i class="fas fa-file-pdf"></i>
+                    </a>
+                </div>
+                <div class="copyright">
+                    &copy; 2023 Elischa Imona Kongolo-Malunga. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
+        
+        // Tab functionality
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const tabId = btn.getAttribute('data-tab');
+                
+                // Update active tab button
+                tabBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                // Show active tab content
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === `${tabId}-tab`) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Update active nav link
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                    
+                    // Scroll to target
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // In a real implementation, you would send this data to a server
+            // For this example, we'll just show an alert
+            alert(`Thank you for your message, ${name}! I'll get back to you soon at ${email}.`);
+            
+            // Reset form
+            contactForm.reset();
+        });
+        
+        // Update active nav link on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Add loading animation for images
+        window.addEventListener('load', function() {
+            document.querySelectorAll('img').forEach(img => {
+                img.style.opacity = '1';
+                img.style.transition = 'opacity 0.5s ease';
+            });
+        });
+    </script>
+</body>
+</html>
